@@ -12,9 +12,10 @@ def busca_arestas(v_arestas, origem):
 	return resultado
 
 # Constroi matriz de transições, considerando escadas e cobras
-# n: total de casas do tabuleiro
+# m: casas do lado do tabuleiro(m x m)
 # arestas_especiais: conjuntos das arestas cobras e escadas
-def matrizP_snakesladders(n, arestas_especiais):
+def matrizP_snakesladders(m, arestas_especiais):
+	n = m*m
 	P = np.zeros((n,n))
 
 	for i in range(n-2):
@@ -100,7 +101,7 @@ n = m ** 2
 arestas_especiais = arestas_ladders + arestas_snakes
 
 # Gera matriz P e probabilidade inicial w0
-P = matrizP_snakesladders(n, arestas_especiais)
+P = matrizP_snakesladders(m, arestas_especiais)
 w0 = np.zeros(n)
 w0[0] = 1. # Estado inicial, começa na primeira casa do tabuleiro
 	
