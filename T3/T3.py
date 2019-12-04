@@ -73,7 +73,7 @@ for linha in f.readlines():
 		i += 1
 f.close()
 
-print ("Grafos G de cidades carregado: %d vertices e %d arestas.\n" % (G.number_of_nodes(), G.number_of_edges()))
+print(("Grafos G de cidades carregado: %d vertices e %d arestas.\n" % (G.number_of_nodes(), G.number_of_edges())))
 print ("Desenhando grafo, feche para continuar...")
 
 #Desenha grafo inicial das cidades
@@ -84,8 +84,8 @@ print ("Desenhando grafo, feche para continuar...")
 
 tour = nearest_neighbor_tour(G)
 Gtour = tour_graph(tour)
-print tour
-print Gtour.nodes
+print(tour)
+print(Gtour.nodes)
 Gd = nx.relabel_nodes(Gtour, nomes)
 nx.draw(Gd, with_labels = True, **opcoes_desenho)
 plt.show()

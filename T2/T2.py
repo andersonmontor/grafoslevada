@@ -68,7 +68,7 @@ for linha in f.readlines():
 		i += 1
 f.close()
 
-print ("Grafos G de cidades carregado: %d vertices e %d arestas.\n" % (G.number_of_nodes(), G.number_of_edges()))
+print(("Grafos G de cidades carregado: %d vertices e %d arestas.\n" % (G.number_of_nodes(), G.number_of_edges())))
 print ("Desenhando grafo, feche para continuar...")
 #Desenha grafo inicial das cidades, antes de agrupar
 Gd = nx.relabel_nodes(G, nomes)
@@ -76,16 +76,16 @@ nx.draw(Gd, with_labels = True, **opcoes_desenho)
 plt.show()
 
 # Computa grafo de agrupamento, com k grupos
-Ks = input("Digite valores de k separados por virgula(pra responder questoes do enunciado, seria: 2, 3): ")
+Ks = eval(input("Digite valores de k separados por virgula(pra responder questoes do enunciado, seria: 2, 3): "))
 for k in Ks:
-	v_raizes = input("Digite as %d raizes separado por virgulas: " % k)
+	v_raizes = eval(input("Digite as %d raizes separado por virgulas: " % k))
 
 	H = dijkstra_multi_raizes(G, v_raizes)
 	
-	print ("Grafo H de agrupamento com %d grupos computado: %d vertices e %d arestas." % (k, H.number_of_nodes(), H.number_of_edges()))
+	print(("Grafo H de agrupamento com %d grupos computado: %d vertices e %d arestas." % (k, H.number_of_nodes(), H.number_of_edges())))
 	for r in v_raizes:
 		sub = H.subgraph([r] + list(H.adj[r]))
-		print ("\nGrupo de raiz: %d(%s)\nVertices: %d Arestas: %d" % (r, nomes[r], sub.number_of_nodes(), sub.number_of_edges()))
+		print(("\nGrupo de raiz: %d(%s)\nVertices: %d Arestas: %d" % (r, nomes[r], sub.number_of_nodes(), sub.number_of_edges())))
 	
 	print ("Desenhando grafo, feche para continuar...")
 	opcoes_desenho["width"] = 1.0
